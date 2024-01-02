@@ -42,6 +42,7 @@ func SetOauthEndpoints(apiInfoEndpoint string, oAuthConfig *OAuthConfig, config 
 	}
 	args = append(args, apiInfoEndpoint)
 	curl := helpers.Curl(Config, args...).Wait()
+	fmt.Println("PHC apiInfoEndpoint: ", apiInfoEndpoint)
 	Expect(curl).To(Exit(0))
 	apiResponse := curl.Out.Contents()
 	jsonResult := ParseJsonResponse(apiResponse)
